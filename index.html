@@ -1,1 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Elite Father Protocol | Elite Fathers Only</title>
 
+<style>
+:root {
+  --bg-dark:#050608;
+  --bg-section:#0b0c10;
+  --bg-card:#101118;
+  --border-subtle:#20222f;
+  --accent:#ffffff;
+  --muted:#b3b7c3;
+  --text-main:#f5f5f5;
+  --danger:#f25f5c;
+  --accent-soft:#c5c6c7;
+}
+
+* {
+  margin:0; padding:0; box-sizing:border-box;
+}
+
+body {
+  font-family:system-ui,Arial,sans-serif;
+  background:radial-gradient(circle at top left,#151824 0,#050608 45%,#020308 100%);
+  color:var(--text-main);
+  line-height:1.6;
+}
+
+a { text-decoration:none; color:inherit; }
+
+.page { min-height:100vh; }
+
+/* NAV */
+.nav {
+  position:sticky; top:0; z-index:50;
+  backdrop-filter:blur(16px);
+  background:linear-gradient(to bottom,rgba(5,6,8,0.96),rgba(5,6,8,0.85));
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+
+.nav-inner {
+  max-width:1100px; margin:0 auto; padding:14px 20px;
+  display:flex; justify-content:space-between; align-items:center;
+}
+
+.nav-logo {
+  font-size:18px; font-weight:700; letter-spacing:0.14em;
+  text-transform:uppercase;
+}
+
+.nav-tag {
+  font-size:11px; letter-spacing:0.18em; text-transform:uppercase;
+  color:var(--muted); margin-left:10px;
+}
+
+.nav-links {
+  display:flex; gap:18px;
+  font-size:13px; text-transform:uppercase; letter-spacing:0.16em;
+  color:var(--accent-soft);
+}
+
+.section {
+  padding:60px 20px;
+  background:radial-gradient(circle at top,rgba(255,255,255,0.025),rgba(0,0,0,0.92));
+  border-bottom:1px solid var(--border-subtle);
+}
+
+.section-alt {
+  background:radial-gradient(circle at center,rgba(13,14,24,0.92),rgba(0,0,0,0.97));
+  border-bottom:1px solid var(--border-subtle);
+}
+
+.container { max-width:1100px; margin:0 auto; }
+
+.kicker {
+  font-size:11px; letter-spacing:0.24em; text-transform:uppercase;
+  color:var(--accent-soft); margin-bottom:10px;
+}
+
+.h1 {
+  font-size:clamp(34px,4vw,48px);
+  font-weight:700; line-height:1.1; margin-bottom:12px;
+}
+
+.h1 span { color:var(--accent); }
+
+.h2 {
+  font-size:clamp(22px,3vw,30px);
+  font-weight:600; margin-bottom:14px;
+  position:relative; padding-left:14px;
+}
+.h2::before {
+  content:""; position:absolute;
+  left:0; top:4px; bottom:4px;
+  width:3px; background:var(--accent); border-radius:2px;
+}
+
+.lead { font-size:17px; color:var(--accent-soft); max-width:680px; }
+  /* Buttons */
+.btn-row {
+  display:flex; flex-wrap:wrap; gap:14px; margin-top:20px;
+}
+
+.btn-primary {
+  padding:12px 22px; border-radius:999px;
+  background:var(--accent); color:#000;
+  font-size:14px; font-weight:600;
+  text-transform:uppercase; letter-spacing:0.16em;
+}
+
+.btn-outline {
+  padding:11px 20px; border-radius:999px;
+  border:1px solid rgba(255,255,255,0.28);
+  color:var(--accent-soft); background:transparent;
+  font-size:12px; text-transform:uppercase; letter-spacing:0.16em;
+}
+
+/* HERO GRID */
+.hero-grid {
+  display:grid;
+  grid-template-columns: minmax(0,2fr) minmax(0,1.3fr);
+  gap:40px; align-items:center;
+}
+@media(max-width:800px) {
+  .hero-grid { grid-template-columns:1fr; }
+  .nav-links { display:none; }
+}
+
+/* Hero Aside */
+.hero-aside {
+  border-radius:18px;
+  padding:22px;
+  background:radial-gradient(circle at top,#181a24,#070810);
+  border:1px solid rgba(255,255,255,0.08);
+  box-shadow:0 22px 60px rgba(0,0,0,0.7);
+}
+
+.hero-metric-row {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px; margin-top:16px;
+}
+
+.metric {
+  padding:12px;
+  background:rgba(0,0,0,0.45);
+  border:1px solid rgba(255,255,255,0.05);
+  border-radius:12px;
+}
+
+.metric-label {
+  font-size:11px; text-transform:uppercase;
+  letter-spacing:0.14em; color:var(--accent-soft);
+}
+
+.metric-value {
+  font-size:18px; font-weight:600;
+}
+
+/* HERO SECTION HTML */
+</style>
+</head>
+
+<body>
+<div class="page">
+
+<header class="nav">
+  <div class="nav-inner">
+    <div style="display:flex;align-items:baseline;gap:10px;">
+      <div class="nav-logo">ELITE FATHER</div>
+      <div class="nav-tag">NO EXCUSES. NO DECLINE.</div>
+    </div>
+
+    <nav class="nav-links">
+      <a href="#protocol">Protocol</a>
+      <a href="#score">Score</a>
+      <a href="#coach">Coach</a>
+      <a href="#apply">Apply</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section" id="top">
+  <div class="container hero-grid">
+
+    <div>
+      <div class="kicker">FATHERHOOD AS A FORGE</div>
+
+      <h1 class="h1">
+        Become the <span>most capable version of yourself</span> as a father.
+      </h1>
+
+      <p class="lead">
+        Most men collapse when they become fathers — they gain weight, lose energy, and lose their edge.
+        The Elite Father Protocol rebuilds you into a strong, lean, disciplined leader in 16 weeks.
+      </p>
+
+      <div class="pill-row">
+        <div class="pill">Physically Dominant</div>
+        <div class="pill">Metabolically Optimized</div>
+        <div class="pill">Mentally Unbreakable</div>
+      </div>
+
+      <div class="btn-row">
+        <a class="btn-primary" href="#apply">Apply Now</a>
+        <a class="btn-outline" href="#score">Elite Father Score</a>
+      </div>
+    </div>
+
+    <aside class="hero-aside">
+      <div class="kicker">THE ELITE FATHER PROTOCOL</div>
+      <p style="font-size:14px;color:var(--accent-soft);">
+        I take unfit, exhausted dads and rebuild them into the strongest, leanest,
+        most capable version of themselves in 16 weeks — no excuses, no softness, just elite performance.
+      </p>
+
+      <div class="hero-metric-row">
+        <div class="metric">
+          <div class="metric-label">Duration</div>
+          <div class="metric-value">16 Weeks</div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Focus</div>
+          <div class="metric-value">Fathers 30–45</div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Format</div>
+          <div class="metric-value">1:1 Coaching</div>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+</section>
+  <!-- PROBLEM + TRUTH SECTION -->
+<section class="section section-alt" id="problem">
+  <div class="container grid-2">
+
+    <div>
+      <div class="kicker">THE PROBLEM</div>
+      <h2 class="h2">Most fathers are quietly decaying.</h2>
+
+      <p class="lead">
+        They gain weight, lose strength, lose discipline, and call it “normal.”
+        Their energy crashes. Their testosterone tanks. Their edge disappears.
+      </p>
+
+      <ul class="list-clean" style="margin-top:12px;">
+        <li>• Running on caffeine, carbs, and stress.</li>
+        <li>• Softer than they used to be — physically and mentally.</li>
+        <li>• Avoiding mirrors, hard conversations, and responsibility.</li>
+        <li>• Drifting through fatherhood instead of leading.</li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="kicker">THE TRUTH</div>
+      <h2 class="h2">You're not exhausted because you're a dad.</h2>
+
+      <p class="lead">
+        You're exhausted because you're unconditioned.
+        Fatherhood didn't cause your decline — it exposed it.
+      </p>
+
+      <ul class="list-clean" style="margin-top:12px;">
+        <li>• Training intensity collapsed.</li>
+        <li>• Nutrition became reactive and sloppy.</li>
+        <li>• Sleep disintegrated with no recovery strategy.</li>
+        <li>• Stress rose, structure vanished.</li>
+        <li>• Testosterone dropped because habits dropped.</li>
+      </ul>
+
+      <p style="font-size:14px;color:var(--accent-soft);margin-top:12px;font-style:italic;">
+        Decline is not a requirement of fatherhood — it's the consequence of letting yourself go.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- DIFFERENCE SECTION -->
+<section class="section" id="difference">
+  <div class="container">
+    <div class="kicker">NOT ANOTHER DAD FITNESS PLAN</div>
+    <h2 class="h2">What makes the Elite Father Protocol different.</h2>
+
+    <p class="lead">
+      This is not a 30-day challenge, macro sheet, or influencer workout.
+      It is a high-performance identity rebuild engineered for fathers who refuse decline.
+    </p>
+
+    <div class="compare-grid">
+
+      <div class="card">
+        <div class="badge-danger">Typical Dad Fitness</div>
+        <ul class="list-clean" style="margin-top:10px;">
+          <li>• Random workouts with no progression.</li>
+          <li>• “Eat clean” clichés instead of clinical strategy.</li>
+          <li>• No hormonal or metabolic understanding.</li>
+          <li>• Built for aesthetics, not capability.</li>
+          <li>• Zero accountability, zero leadership.</li>
+          <li>• Treats fatherhood as a limitation.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="badge-good">The Elite Father Protocol</div>
+        <ul class="list-clean" style="margin-top:10px;">
+          <li>• Strength + conditioning engineered for fathers.</li>
+          <li>• Metabolic & hormonal optimization.</li>
+          <li>• 1:1 high-touch accountability & leadership.</li>
+          <li>• Discipline + identity systems.</li>
+          <li>• Built by a father with clinical + performance expertise.</li>
+          <li>• Turns fatherhood into an advantage — not an excuse.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ELITE FATHER PROTOCOL (PART 1) -->
+<section class="section section-alt" id="protocol">
+  <div class="container">
+    <div class="kicker">THE SYSTEM</div>
+    <h2 class="h2">The Elite Father Protocol — 16 Weeks.</h2>
+
+    <p class="lead">
+      A five-pillar system engineered to restore strength, energy, testosterone, and leadership in high-performance fathers.
+    </p>
+
+    <div class="grid-2" style="margin-top:26px;">
+      <div class="card">
+        <h3>1. Biochem-Based Nutrition</h3>
+        <p>
+          Clinically-grounded metabolic optimization, protein structuring,
+          inflammation control, carb timing, and nutrition systems designed for elite performance.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>2. Strength + Conditioning</h3>
+        <p>
+          Hybrid operator-style training: strength, hypertrophy, power, and conditioning
+          designed for capability — not vanity.
+        </p>
+      </div>
+            <div class="card">
+        <h3>3. Hormone & Metabolic Optimization</h3>
+        <p>
+          Sleep architecture, cortisol control, metabolic stabilization,
+          and testosterone-supporting lifestyle protocols written specifically for fathers.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>4. Recovery Architecture</h3>
+        <p>
+          Nervous system regulation, fatigue management, joint health strategy,
+          and recovery frameworks that keep you high-performing without burning out.
+        </p>
+      </div>
+
+      <div class="card" style="grid-column: span 2;">
+        <h3>5. Fatherhood Leadership & Discipline Systems</h3>
+        <p>
+          Identity rewiring, discipline frameworks, masculine presence,
+          and leadership systems that turn you into the man your family looks to for strength.
+        </p>
+      </div>
+    </div>
+
+    <!-- TIMELINE -->
+    <div style="margin-top:40px;">
+      <div class="kicker">THE 16-WEEK ARC</div>
+      <h3 style="font-size:18px;margin-bottom:12px;">What the journey looks like:</h3>
+
+      <div class="timeline">
+        <div class="timeline-step">
+          <strong>Weeks 1–2 — Reset & Assessment</strong>
+          Baseline testing, sleep reset, nutrition structure, and training foundations.
+          You stop the slide and regain control.
+        </div>
+
+        <div class="timeline-step">
+          <strong>Weeks 3–6 — Intensification</strong>
+          Strength climbs. Fat starts dropping. Discipline systems lock in.
+          Your edge starts coming back.
+        </div>
+
+        <div class="timeline-step">
+          <strong>Weeks 7–12 — Optimization</strong>
+          Metabolism and hormones optimize. Conditioning improves.
+          Body composition shifts visibly.
+        </div>
+
+        <div class="timeline-step">
+          <strong>Weeks 13–16 — Consolidation</strong>
+          Identity, standards, and leadership are hardened.
+          This is where the Elite Father identity becomes permanent.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ELITE FATHER SCORE -->
+<section class="section" id="score">
+  <div class="container">
+    <div class="kicker">CALL YOURSELF OUT</div>
+    <h2 class="h2">Your Elite Father Score.</h2>
+
+    <p class="lead">
+      Your performance as a father can be measured.
+      Answer honestly — this is the mirror most men avoid.
+    </p>
+
+    <div class="score-grid">
+      <ul>
+        <li>1. Do you train with intensity at least 3–4 days per week?</li>
+        <li>2. Do you sleep 7+ hours most nights with a structured routine?</li>
+        <li>3. Do you follow a consistent protein-first nutrition system?</li>
+        <li>4. Do you feel strong, capable, and energized daily?</li>
+        <li>5. Do you lead your household with presence & discipline?</li>
+        <li>6. Has your strength increased in the last 12 months?</li>
+        <li>7. Do you manage stress purposefully instead of coping with it?</li>
+        <li>8. Would your family say you’re operating at your highest level?</li>
+      </ul>
+
+      <div class="score-scale">
+        <span><strong>0–3:</strong> Father in Decline — intervention needed immediately.</span>
+        <span><strong>4–6:</strong> Capable but Inconsistent — the slide has already begun.</span>
+        <span><strong>7–8:</strong> High-Performance Father — maintain standards or level up further.</span>
+      </div>
+    </div>
+
+    <p style="margin-top:20px;font-size:16px;color:var(--accent-soft);">
+      If your score isn’t where it should be, the Elite Father Protocol will fix that.
+      The only question is whether you’re done pretending you’re fine.
+    </p>
+
+    <div class="btn-row" style="margin-top:26px;">
+      <a class="btn-primary" href="#apply">Apply for the Protocol</a>
+    </div>
+  </div>
+</section>
+  <!-- FIT / NOT FIT SECTION -->
+<section class="section section-alt" id="fit">
+  <div class="container">
+    <div class="kicker">FILTERING MATTERS</div>
+    <h2 class="h2">Who this is for — and who it isn’t.</h2>
+
+    <p class="lead">Not every father is ready to become elite. That’s the point.</p>
+
+    <div class="fit-grid">
+
+      <div class="fit-card">
+        <h3>For Fathers Who:</h3>
+        <ul>
+          <li>• Are 30–45 with 1–3 young kids.</li>
+          <li>• Feel their edge, strength, or drive slipping.</li>
+          <li>• Are financially stable and ready to invest.</li>
+          <li>• Want to lead their family from the front.</li>
+          <li>• Are willing to train hard and be coached.</li>
+        </ul>
+      </div>
+
+      <div class="fit-card">
+        <h3>Not For Fathers Who:</h3>
+        <ul>
+          <li>• Want shortcuts, hacks, or quick fixes.</li>
+          <li>• Blame their kids instead of their choices.</li>
+          <li>• Avoid discomfort and accountability.</li>
+          <li>• Aren’t willing to change their habits.</li>
+          <li>• Prefer excuses over action.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- PRICING ANCHOR SECTION -->
+<section class="section" id="value">
+  <div class="container">
+    <div class="kicker">THE INVESTMENT</div>
+    <h2 class="h2">Why elite coaching costs more — and why it’s worth it.</h2>
+
+    <p class="lead">
+      Most fathers spend years declining. Elite Fathers invest 16 weeks to rise again.
+    </p>
+
+    <div class="compare-grid" style="margin-top:26px;">
+
+      <div class="card">
+        <h3>The Hidden Cost of Doing Nothing</h3>
+        <ul class="list-clean" style="margin-top:8px;">
+          <li>• Years of low energy and quiet frustration.</li>
+          <li>• Weight gain, weakness, and declining testosterone.</li>
+          <li>• Reduced attraction and household polarity.</li>
+          <li>• Becoming the father you swore you'd never be.</li>
+          <li>• Loss of confidence, identity, and edge.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>The Value of Becoming Elite</h3>
+        <ul class="list-clean" style="margin-top:8px;">
+          <li>• Strength, energy, and capability restored.</li>
+          <li>• 15–25 lbs fat lost in 16 weeks.</li>
+          <li>• Elevated testosterone and masculine drive.</li>
+          <li>• Discipline, leadership, and identity rebuilt.</li>
+          <li>• Becoming the father your family actually looks up to.</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <p style="margin-top:26px;font-size:15px;color:var(--accent-soft);">
+      This is why the Elite Father Protocol is a high-ticket, 1:1 coaching container.
+      Most men never reach this level of commitment. A small percentage do.
+      Those are the men this exists for.
+    </p>
+
+  </div>
+</section>
+
+
+<!-- SOCIAL PROOF / TESTIMONIALS -->
+<section class="section section-alt" id="proof">
+  <div class="container">
+    <div class="kicker">PROOF OF STANDARD</div>
+    <h2 class="h2">Proven by Elite Fathers.</h2>
+
+    <p class="lead">
+      These are the kinds of wins fathers experience inside the Elite Father Protocol —
+      and what you can expect when you commit.
+    </p>
+
+    <div class="quote-grid">
+
+      <div class="quote-card">
+        “I didn’t realize how far I’d slipped. Within weeks, my energy came back.
+        My wife noticed. My kids noticed. I felt like myself again.”
+        <strong>— Example Father</strong>
+      </div>
+
+      <div class="quote-card">
+        “My strength shot up fast. I became disciplined again. I started leading again.
+        The entire house changed because my presence changed.”
+        <strong>— Example Father</strong>
+      </div>
+
+      <div class="quote-card">
+        “This wasn’t just fitness. I became a man I’m proud of again.
+        My son looks at me differently. That’s priceless.”
+        <strong>— Example Father</strong>
+      </div>
+
+    </div>
+
+    <div class="btn-row" style="margin-top:26px;">
+      <a class="btn-primary" href="#apply">Apply for the Protocol</a>
+    </div>
+  </div>
+</section>
+  <!-- COACH SECTION -->
+<section class="section" id="coach">
+  <div class="container coach-grid">
+
+    <div class="avatar-box">
+      <!-- Replace this with an <img> tag later -->
+      Your photo goes here. Black & white. Sharp. Authoritative.
+    </div>
+
+    <div>
+      <div class="kicker">MEET YOUR COACH</div>
+      <h2 class="h2">The Elite Father behind the protocol.</h2>
+
+      <p class="lead">
+        I’m James Paul — husband, father, and high-performance coach.
+        I don’t accept excuses, I don’t tolerate softness, and I don’t allow decline.
+      </p>
+
+      <p style="margin-top:10px;font-size:15px;color:var(--accent-soft);">
+        With a BSc in Biochemistry, an MSc in Applied Clinical Nutrition, and over a decade of experience
+        coaching men, I built The Elite Father Protocol to restore what fathers lose:
+        strength, energy, testosterone, identity, and leadership — without sacrificing their family.
+      </p>
+
+      <div class="trust-row">
+        <div class="trust-pill">BSc Biochemistry</div>
+        <div class="trust-pill">MSc Clinical Nutrition</div>
+        <div class="trust-pill">10+ Years Coaching</div>
+        <div class="trust-pill">Father & Practitioner</div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- APPLY SECTION -->
+<section class="section section-alt" id="apply">
+  <div class="container" style="text-align:center;">
+
+    <div class="kicker">ELITE FATHERS ONLY</div>
+    <h2 class="h2" style="display:inline-block;">Apply for the Elite Father Protocol.</h2>
+
+    <p class="lead" style="margin:0 auto 22px;">
+      If you're ready to stop sliding backward and rebuild yourself into the strongest,
+      most capable version of you — this is where it begins.
+    </p>
+
+    <p style="font-size:14px;color:var(--accent-soft);max-width:640px;margin:0 auto 18px;">
+      Step 1: Complete the Elite Father Score.<br>
+      Step 2: Submit your application & book your call.<br>
+      Step 3: If it’s a fit, we begin your 16-week rebuild.
+    </p>
+
+    <div class="btn-row" style="justify-content:center;margin-top:18px;">
+      <!-- Replace # with your Calendly link -->
+      <a class="btn-primary" href="#">Start Your Application</a>
+
+      <a class="btn-outline" href="mailto:coach@elitefathercoach.com">
+        coach@elitefathercoach.com
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div>© <span id="year"></span> Elite Father Coaching. All rights reserved.</div>
+    <div>No excuses. No softness. No decline.</div>
+  </div>
+</footer>
+
+</div>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
