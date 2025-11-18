@@ -17,6 +17,25 @@
   --danger:#f25f5c;
   --accent-soft:#c5c6c7;
 }
+.card {
+  background: var(--bg-card);
+  border-radius: 18px;
+  padding: 22px 20px 20px;
+  border: 1px solid var(--border-subtle);
+}
+/* CARD SPACING FIXES */
+.card {
+  margin-bottom: 32px;
+}
+
+.card h3 {
+  margin-bottom: 14px;
+}
+
+.card p {
+  line-height: 1.6;
+  margin-bottom: 6px;
+}
 
 * { margin:0; padding:0; box-sizing:border-box; }
 
@@ -35,7 +54,8 @@ a { text-decoration:none; color:inherit; }
 section { padding:80px 20px; }
 .lead { margin-bottom:24px; }
 .h2 { margin-bottom:24px; margin-top:40px; }
-.list-clean li { margin-bottom:12px; }
+.list-clean li { margin-bottom: 12px; }
+  .list-clean { margin-top: 24px; margin-bottom: 24px;}
 
 /* NAV */
 .nav {
@@ -295,29 +315,28 @@ section { padding:80px 20px; }
 
       <!-- TYPICAL DAD FITNESS -->
       <div class="card">
-        <div class="badge-danger">Typical Dad Fitness</div>
-        <ul class="list-clean" style="margin-top:10px;">
-          <li>Random workouts with no progression.</li>
-          <li>“Eat clean” clichés instead of real strategy.</li>
-          <li>No hormonal or metabolic understanding.</li>
-          <li>Built for aesthetics, not capability.</li>
-          <li>Zero accountability and zero leadership.</li>
-          <li>Treats fatherhood as a limitation.</li>
-        </ul>
-      </div>
+  <h3 style="margin-bottom:12px;">Typical Dad Fitness</h3>
+  <ul class="list-clean">
+    <li>Random workouts with no progression.</li>
+    <li>“Eat clean” clichés instead of real strategy.</li>
+    <li>No hormonal or metabolic understanding.</li>
+    <li>Built for aesthetics, not capability.</li>
+    <li>Zero accountability and zero leadership.</li>
+    <li>Treats fatherhood as a limitation.</li>
+  </ul>
+</div>
 
-      <!-- ELITE FATHER PROTOCOL -->
-      <div class="card">
-        <div class="badge-good">The Elite Father Protocol</div>
-        <ul class="list-clean" style="margin-top:10px;">
-          <li>Strength + conditioning engineered for fathers.</li>
-          <li>Metabolic & hormonal optimization.</li>
-          <li>1:1 high-touch accountability & leadership.</li>
-          <li>Discipline + identity systems.</li>
-          <li>Built by a father with clinical + performance expertise.</li>
-          <li>Turns fatherhood into an advantage — not an excuse.</li>
-        </ul>
-      </div>
+<div class="card">
+  <h3 style="margin-bottom:12px;">The Elite Father Protocol</h3>
+  <ul class="list-clean">
+    <li>Strength + conditioning engineered for fathers.</li>
+    <li>Metabolic & hormonal optimization.</li>
+    <li>1:1 high-touch accountability & leadership.</li>
+    <li>Discipline + identity systems.</li>
+    <li>Built by a father with clinical + performance expertise.</li>
+    <li>Turns fatherhood into an advantage — not an excuse.</li>
+  </ul>
+</div>
 
     </div>
 
