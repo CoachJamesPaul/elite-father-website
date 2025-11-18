@@ -20,6 +20,9 @@
   --text-main:#f5f5f5;
   --danger:#f25f5c;
   --accent-soft:#c5c6c7;
+
+  --success:#4ade80;
+  --danger-red:#f25f5c;
 }
 
 /* ============================= */
@@ -30,9 +33,10 @@
   padding:0;
   box-sizing:border-box;
 }
+
 body {
   font-family:system-ui,Arial,sans-serif;
-  background:radial-gradient(circle at top left,#151824 0,#050608 45%,#020308 100%);
+  background:var(--bg-dark);
   color:var(--text-main);
   line-height:1.6;
 }
@@ -52,7 +56,7 @@ section { padding:80px 20px; }
 .list-clean li { margin-bottom:12px; }
 .list-clean { margin-top:32px; margin-bottom:40px; }
 
-/* Fix spacing above kicker labels */
+/* Kicker spacing fix */
 .kicker { margin-top:40px; }
 
 /* ============================= */
@@ -75,16 +79,25 @@ section { padding:80px 20px; }
 .nav {
   position:sticky; top:0; z-index:50;
   backdrop-filter:blur(16px);
-  background:linear-gradient(to bottom,rgba(5,6,8,0.96),rgba(5,6,8,0.85));
+  background:rgba(5,6,8,0.85);
   border-bottom:1px solid rgba(255,255,255,0.06);
 }
 .nav-inner {
   max-width:1100px; margin:0 auto; padding:14px 20px;
   display:flex; justify-content:space-between; align-items:center;
 }
-.nav-logo { font-size:18px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; }
-.nav-tag { font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); margin-left:10px; }
-.nav-links { display:flex; gap:18px; font-size:13px; text-transform:uppercase; letter-spacing:0.16em; color:var(--accent-soft); }
+.nav-logo {
+  font-size:18px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase;
+}
+.nav-tag {
+  font-size:11px; letter-spacing:0.18em; text-transform:uppercase;
+  color:var(--muted); margin-left:10px;
+}
+.nav-links {
+  display:flex; gap:18px;
+  font-size:13px; text-transform:uppercase; letter-spacing:0.16em;
+  color:var(--accent-soft);
+}
 
 /* ============================= */
 /* TYPOGRAPHY */
@@ -116,6 +129,11 @@ section { padding:80px 20px; }
   background:var(--accent); color:#000;
   font-size:14px; font-weight:600;
   text-transform:uppercase; letter-spacing:0.16em;
+  transition:0.2s;
+}
+
+.btn-primary:hover {
+  background:#e6e6e6;
 }
 
 .btn-outline {
@@ -123,17 +141,17 @@ section { padding:80px 20px; }
   border:1px solid rgba(255,255,255,0.28);
   color:var(--accent-soft); background:transparent;
   font-size:12px; text-transform:uppercase; letter-spacing:0.16em;
+  transition:0.2s;
 }
-.score-item {
-  margin-bottom: 22px;
+
+.btn-outline:hover {
+  background:#ffffff22;
 }
-  #score-result {
-  margin-bottom: 16px;
-}
-  #score-interpretation {
-  margin-bottom: 22px;
-}
-  .yes-btn {
+
+/* ============================= */
+/* YES/NO BUTTONS (Clean + Elite Minimal) */
+/* ============================= */
+.yes-btn, .no-btn {
   padding: 8px 18px;
   border-radius: 30px;
   background: transparent;
@@ -141,45 +159,90 @@ section { padding:80px 20px; }
   color: var(--accent-soft);
   font-size: 14px;
   cursor: pointer;
-  transition: all 0.2s;
+  margin-right: 12px;
+  transition: 0.2s;
+  position: relative;
+  overflow: hidden;
 }
 
-.yes-btn:hover {
+.yes-btn:hover, .no-btn:hover {
   background: #ffffff22;
 }
 
-/* ============================= */
-/* HERO GRID */
-/* ============================= */
-.hero-grid {
-  display:grid;
-  grid-template-columns:minmax(0,2fr) minmax(0,1.3fr);
-  gap:40px; align-items:center;
-}
-@media(max-width:800px){
-  .hero-grid { grid-template-columns:1fr; }
-  .nav-links { display:none; }
+/* Ripple */
+.yes-btn:active::after, .no-btn:active::after {
+  content:"";
+  position:absolute;
+  width:120px;
+  height:120px;
+  background:rgba(255,255,255,0.3);
+  border-radius:50%;
+  opacity:0.25;
+  top:50%; left:50%;
+  transform:translate(-50%, -50%);
+  transition:0.2s ease-out;
 }
 
-/* HERO ASIDE */
-.hero-aside {
-  border-radius:18px; padding:22px;
-  background:radial-gradient(circle at top,#181a24,#070810);
-  border:1px solid rgba(255,255,255,0.08);
-  box-shadow:0 22px 60px rgba(0,0,0,0.7);
+/* ============================= */
+/* SCORE ITEM */
+/* ============================= */
+.score-item {
+  margin-bottom: 28px;
 }
-.hero-metric-row {
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:14px; margin-top:16px;
+
+/* ============================= */
+/* PROGRESS BAR */
+/* ============================= */
+#progress-container {
+  width: 100%;
+  background: rgba(255,255,255,0.08);
+  height: 7px;
+  border-radius: 10px;
+  margin: 24px 0;
+  overflow: hidden;
 }
-.metric {
-  padding:12px; border-radius:12px;
-  background:rgba(0,0,0,0.45);
-  border:1px solid rgba(255,255,255,0.04);
+
+#progress-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--success);
+  transition: width 0.4s ease;
 }
-.metric-label { font-size:11px; text-transform:uppercase; letter-spacing:0.14em; color:var(--accent-soft); }
-.metric-value { font-size:18px; font-weight:600; }
+
+/* ============================= */
+/* CTA UNLOCK ANIMATION */
+/* ============================= */
+.cta-animated {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.cta-animated.visible {
+  opacity: 1;
+  transform: translateY(0);
+  animation: ctaPulse 2.2s ease-in-out infinite;
+}
+
+@keyframes ctaPulse {
+  0% { box-shadow:0 0 0 rgba(255,255,255,0.0); }
+  50% { box-shadow:0 0 14px rgba(255,255,255,0.25); }
+  100% { box-shadow:0 0 0 rgba(255,255,255,0.0); }
+}
+
+/* ============================= */
+/* FADE-UP ANIMATIONS */
+/* ============================= */
+.fade-up {
+  opacity:0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-up.visible {
+  opacity:1;
+  transform: translateY(0);
+}
 
 </style>
 </head>
@@ -187,6 +250,7 @@ section { padding:80px 20px; }
 <body>
 <div class="page">
 
+<!-- NAV -->
 <header class="nav">
   <div class="nav-inner">
     <div style="display:flex;align-items:baseline;gap:10px;">
@@ -203,30 +267,30 @@ section { padding:80px 20px; }
   </div>
 </header>
 <!-- HERO -->
-<section class="section" id="top">
+<section class="section fade-up" id="top">
   <div class="container hero-grid">
 
     <!-- HERO LEFT TEXT -->
     <div>
-      <div class="kicker">FATHERHOOD AS A FORGE</div>
+      <div class="kicker fade-up">FATHERHOOD AS A FORGE</div>
 
-      <h1 class="h1">
+      <h1 class="h1 fade-up">
         Become the <span>most capable version of yourself</span> as a father.
       </h1>
 
-      <p class="lead">
+      <p class="lead fade-up">
         Most men collapse when they become fathers — they gain weight, lose energy, and lose their edge.
         The Elite Father Protocol rebuilds you into a strong, lean, disciplined leader in 16 weeks.
       </p>
 
-      <div class="pill-row">
+      <div class="pill-row fade-up">
         <div class="pill">Physically Dominant</div>
         <div class="pill">Metabolically Optimized</div>
         <div class="pill">Mentally Unbreakable</div>
       </div>
 
-      <div class="btn-row">
-        <!-- Primary CTA goes directly to Calendly -->
+      <div class="btn-row fade-up">
+        <!-- Primary CTA links to Calendly -->
         <a class="btn-primary"
            href="https://calendly.com/coach-elitefathercoach/15min"
            target="_blank">
@@ -240,8 +304,8 @@ section { padding:80px 20px; }
     </div>
 
 
-    <!-- HERO RIGHT: ASIDE METRIC CARD -->
-    <aside class="hero-aside">
+    <!-- HERO RIGHT METRIC PANEL -->
+    <aside class="hero-aside fade-up">
       <div class="kicker">THE ELITE FATHER PROTOCOL</div>
 
       <p style="font-size:14px; color:var(--accent-soft);">
@@ -268,14 +332,16 @@ section { padding:80px 20px; }
   </div>
 </section>
 <!-- PROBLEM + TRUTH SECTION -->
-<section class="section section-alt" id="problem">
+<section class="section section-alt fade-up" id="problem">
   <div class="container grid-2">
 
     <!-- PROBLEM -->
-    <div>
+    <div class="fade-up">
       <div class="kicker">THE PROBLEM</div>
 
-      <h2 class="h2">Most fathers are quietly decaying.</h2>
+      <h2 class="h2">
+        Most fathers are quietly decaying.
+      </h2>
 
       <p class="lead">
         They gain weight, lose strength, lose discipline, and call it “normal.”
@@ -291,11 +357,13 @@ section { padding:80px 20px; }
     </div>
 
 
-    <!-- THE TRUTH -->
-    <div>
+    <!-- TRUTH -->
+    <div class="fade-up">
       <div class="kicker">THE TRUTH</div>
 
-      <h2 class="h2">You're not exhausted because you're a dad.</h2>
+      <h2 class="h2">
+        You're not exhausted because you're a dad.
+      </h2>
 
       <p class="lead">
         You're exhausted because you're unconditioned.
@@ -321,14 +389,16 @@ section { padding:80px 20px; }
 
 
 <!-- DIFFERENCE SECTION -->
-<section class="section" id="difference">
+<section class="section fade-up" id="difference">
   <div class="container">
 
-    <div class="kicker">NOT ANOTHER DAD FITNESS PLAN</div>
+    <div class="kicker fade-up">NOT ANOTHER DAD FITNESS PLAN</div>
 
-    <h2 class="h2">What makes the Elite Father Protocol different.</h2>
+    <h2 class="h2 fade-up">
+      What makes the Elite Father Protocol different.
+    </h2>
 
-    <p class="lead">
+    <p class="lead fade-up">
       This is not a 30-day challenge, macro sheet, or influencer workout.
       It is a high-performance identity rebuild engineered for fathers who refuse decline.
     </p>
@@ -336,7 +406,7 @@ section { padding:80px 20px; }
     <div class="compare-grid">
 
       <!-- TYPICAL DAD FITNESS -->
-      <div class="card">
+      <div class="card fade-up">
         <h3>Typical Dad Fitness</h3>
         <ul class="list-clean">
           <li>Random workouts with no progression.</li>
@@ -349,7 +419,7 @@ section { padding:80px 20px; }
       </div>
 
       <!-- ELITE FATHER PROTOCOL -->
-      <div class="card">
+      <div class="card fade-up">
         <h3>The Elite Father Protocol</h3>
         <ul class="list-clean">
           <li>Strength + conditioning engineered for fathers.</li>
@@ -366,13 +436,13 @@ section { padding:80px 20px; }
   </div>
 </section>
 <!-- ELITE FATHER PROTOCOL -->
-<section class="section section-alt" id="protocol">
+<section class="section section-alt fade-up" id="protocol">
   <div class="container">
 
-    <div class="kicker">THE SYSTEM</div>
-    <h2 class="h2">The Elite Father Protocol — 16 Weeks.</h2>
+    <div class="kicker fade-up">THE SYSTEM</div>
+    <h2 class="h2 fade-up">The Elite Father Protocol — 16 Weeks.</h2>
 
-    <p class="lead">
+    <p class="lead fade-up">
       A five-pillar system engineered to restore strength, energy, testosterone,
       discipline, and leadership in high-performance fathers.
     </p>
@@ -380,81 +450,82 @@ section { padding:80px 20px; }
     <div class="grid-2" style="margin-top:26px;">
 
       <!-- Pillar 1 -->
-      <div class="card">
+      <div class="card fade-up">
         <h3>1. Biochem-Based Nutrition</h3>
         <p>
-          Clinically grounded metabolic optimization, protein-first structure, inflammation control,
-          carb timing, and nutrition systems designed for elite performance.
+          Clinically grounded metabolic optimization, protein-first structure,
+          inflammation control, carb timing, and nutrition systems designed for elite performance.
         </p>
       </div>
 
       <!-- Pillar 2 -->
-      <div class="card">
+      <div class="card fade-up">
         <h3>2. Strength + Conditioning</h3>
         <p>
-          Hybrid operator-style training: strength, hypertrophy, power, and conditioning
-          designed for capability — not vanity.
+          Hybrid operator-style training: strength, hypertrophy, power, and conditioning —
+          designed for capability, not vanity.
         </p>
       </div>
 
       <!-- Pillar 3 -->
-      <div class="card">
+      <div class="card fade-up">
         <h3>3. Hormone & Metabolic Optimization</h3>
         <p>
-          Sleep architecture, cortisol regulation, metabolic stabilization,
+          Sleep architecture, cortisol regulation, metabolic stability,
           and testosterone-supporting lifestyle protocols tailored for fathers.
         </p>
       </div>
 
       <!-- Pillar 4 -->
-      <div class="card">
+      <div class="card fade-up">
         <h3>4. Recovery Architecture</h3>
         <p>
-          Nervous system regulation, fatigue management, joint health strategy,
+          Nervous system regulation, fatigue management, joint health,
           and recovery frameworks that keep you high-performing without burnout.
         </p>
       </div>
 
       <!-- Pillar 5 -->
-      <div class="card" style="grid-column: span 2;">
+      <div class="card fade-up" style="grid-column: span 2;">
         <h3>5. Fatherhood Leadership & Discipline Systems</h3>
         <p>
-          Identity rewiring, discipline frameworks, masculine presence, and leadership structures
-          that turn you into the man your family looks to for strength.
+          Identity rewiring, discipline frameworks, masculine presence,
+          and leadership structures that turn you into the man your family follows with pride.
         </p>
       </div>
 
     </div>
 
+
     <!-- TIMELINE -->
     <div style="margin-top:40px;">
-      <div class="kicker">THE 16-WEEK ARC</div>
-      <h3 style="font-size:18px; margin-bottom:12px;">What the journey looks like:</h3>
+      <div class="kicker fade-up">THE 16-WEEK ARC</div>
+      <h3 class="fade-up" style="font-size:18px; margin-bottom:12px;">What the journey looks like:</h3>
 
       <div class="timeline">
 
-        <div class="timeline-step">
+        <div class="timeline-step fade-up">
           <strong>Weeks 1–2 — Reset & Assessment</strong>
-          Baseline testing, sleep reset, nutrition structure, training foundations.
-          You stop the slide and regain control.
+          Baseline testing, sleep reset, nutrition structure, foundation training.
+          You stop the decline and regain control.
         </div>
 
-        <div class="timeline-step">
+        <div class="timeline-step fade-up">
           <strong>Weeks 3–6 — Intensification</strong>
-          Strength climbs, fat drops, discipline locks in.
-          Your edge begins returning quickly.
+          Strength climbs, fat drops, discipline takes shape.
+          Your edge returns fast.
         </div>
 
-        <div class="timeline-step">
+        <div class="timeline-step fade-up">
           <strong>Weeks 7–12 — Optimization</strong>
-          Hormones, metabolism, conditioning, and body composition shift visibly.
-          Your confidence and presence rise.
+          Hormones, metabolism, conditioning, and body composition improve visibly.
+          Your capability becomes undeniable.
         </div>
 
-        <div class="timeline-step">
+        <div class="timeline-step fade-up">
           <strong>Weeks 13–16 — Consolidation</strong>
-          Identity hardening, leadership integration, and permanent lifestyle architecture.
-          This is where the Elite Father identity becomes permanent.
+          Identity, discipline, and leadership become permanent.
+          This is where you become the Elite Father you were meant to be.
         </div>
 
       </div>
@@ -464,127 +535,217 @@ section { padding:80px 20px; }
 </section>
 
 
+
 <!-- INTERACTIVE ELITE FATHER SCORE -->
-<section class="section" id="score">
+<section class="section fade-up" id="score">
   <div class="container">
 
-    <div class="kicker">CALL YOURSELF OUT</div>
-    <h2 class="h2">Your Elite Father Score.</h2>
+    <div class="kicker fade-up">CALL YOURSELF OUT</div>
+    <h2 class="h2 fade-up">Your Elite Father Score.</h2>
 
-    <p class="lead">
-      Click “Yes” for each statement that is true. Your score updates automatically.
+    <p class="lead fade-up">
+      Click “Yes” or “No” for each statement. Your score updates automatically.
     </p>
+
+    <!-- PROGRESS BAR -->
+    <div id="progress-container" class="fade-up">
+      <div id="progress-bar"></div>
+    </div>
 
     <div id="score-questions" style="margin-top:32px;">
 
-      <div class="score-item">
+      <!-- QUESTION SET -->
+      <div class="score-item fade-up">
         <p>1. Do you train with intensity at least 3–4 days per week?</p>
-        <button class="yes-btn" onclick="updateScore(1, this)">Yes</button>
+        <button class="yes-btn" onclick="updateScore(1, true, this)">Yes</button>
+        <button class="no-btn" onclick="updateScore(1, false, this)">No</button>
       </div>
 
-      <div class="score-item">
+      <div class="score-item fade-up">
         <p>2. Do you sleep 7+ hours most nights with a structured routine?</p>
-        <button class="yes-btn" onclick="updateScore(2, this)">Yes</button>
+        <button class="yes-btn" onclick="updateScore(2, true, this)">Yes</button>
+        <button class="no-btn" onclick="updateScore(2, false, this)">No</button>
       </div>
 
-      <div class="score-item">
+      <div class="score-item fade-up">
         <p>3. Do you follow a consistent protein-first nutrition system?</p>
-        <button class="yes-btn" onclick="updateScore(3, this)">Yes</button>
+        <button class="yes-btn" onclick="updateScore(3, true, this)">Yes</button>
+        <button class="no-btn" onclick="updateScore(3, false, this)">No</button>
       </div>
 
-      <div class="score-item">
+      <div class="score-item fade-up">
         <p>4. Do you feel strong, capable, and energized daily?</p>
-        <button class="yes-btn" onclick="updateScore(4, this)">Yes</button>
+        <button class="yes-btn" onclick="updateScore(4, true, this)">Yes</button>
+        <button class="no-btn" onclick="updateScore(4, false, this)">No</button>
       </div>
 
-      <div class="score-item">
+      <div class="score-item fade-up">
         <p>5. Do you lead your household with presence & discipline?</p>
-        <button class="yes-btn" onclick="updateScore(5, this)">Yes</button>
+        <button class="yes-btn" onclick="updateScore(5, true, this)">Yes</button>
+        <button class="no-btn" onclick="updateScore(5, false, this)">No</button>
       </div>
 
-      <div class="score-item">
+      <div class="score-item fade-up">
         <p>6. Has your strength increased in the last 12 months?</p>
-        <button class="yes-btn" onclick="updateScore(6, this)">Yes</button>
+        <button class="yes-btn" onclick="updateScore(6, true, this)">Yes</button>
+        <button class="no-btn" onclick="updateScore(6, false, this)">No</button>
       </div>
 
-      <div class="score-item">
+      <div class="score-item fade-up">
         <p>7. Do you manage stress purposefully instead of coping with it?</p>
-        <button class="yes-btn" onclick="updateScore(7, this)">Yes</button>
+        <button class="yes-btn" onclick="updateScore(7, true, this)">Yes</button>
+        <button class="no-btn" onclick="updateScore(7, false, this)">No</button>
       </div>
 
-      <div class="score-item">
+      <div class="score-item fade-up">
         <p>8. Would your family say you're operating at your highest level?</p>
-        <button class="yes-btn" onclick="updateScore(8, this)">Yes</button>
+        <button class="yes-btn" onclick="updateScore(8, true, this)">Yes</button>
+        <button class="no-btn" onclick="updateScore(8, false, this)">No</button>
       </div>
 
     </div>
 
+    <!-- SCORE RESULT -->
     <div id="score-result"
+         class="fade-up"
          style="margin-top:40px; font-size:20px; font-weight:bold;">
          Your Score: 0 / 8
     </div>
 
     <p id="score-interpretation"
+       class="fade-up"
        style="margin-top:12px; color:var(--accent-soft); font-size:16px;"></p>
 
-    <div class="btn-row" style="margin-top:32px;">
-      <a class="btn-primary"
+
+    <!-- CTA + RESET -->
+    <div class="btn-row fade-up" style="margin-top:32px; justify-content:center;">
+
+      <a class="btn-primary cta-animated"
+         id="final-cta"
          href="https://calendly.com/coach-elitefathercoach/15min"
          target="_blank">
         Apply for the Protocol
       </a>
+
+      <button class="reset-btn" onclick="resetScore()">
+        Reset Score
+      </button>
+
     </div>
 
   </div>
 </section>
 
 
+
 <!-- SCORE SCRIPT -->
 <script>
+
 let score = 0;
 let answered = {};
 
-function updateScore(q, btn) {
-  if (!answered[q]) {
-    score++;
-    answered[q] = true;
-    btn.style.backgroundColor = "#4ade80"; // green
+function updateScore(q, isYes, btn) {
+
+  if (answered[q] !== undefined) return;
+
+  // Haptic feedback (mobile)
+  if (window.navigator && window.navigator.vibrate) {
+    navigator.vibrate(10);
+  }
+
+  answered[q] = isYes ? 1 : 0;
+  score = Object.values(answered).reduce((a,b)=>a+b,0);
+
+  // Button visuals
+  if (isYes) {
+    btn.style.backgroundColor = "var(--success)";
     btn.style.color = "#000";
-    btn.style.border = "none";
-    document.getElementById("score-result").textContent = `Your Score: ${score} / 8`;
-    updateInterpretation();
-  }
-}
-
-function updateInterpretation() {
-  let text = "";
-
-  if (score <= 3) {
-    text = "0–3: Father in Decline — intervention needed immediately.";
-  } else if (score <= 6) {
-    text = "4–6: Capable but inconsistent — the slide has already begun.";
   } else {
-    text = "7–8: High-Performance Father — maintain standards or level up even further.";
+    btn.style.backgroundColor = "var(--danger-red)";
+    btn.style.color = "#000";
   }
 
-  document.getElementById("score-interpretation").textContent = text;
+  // Disable both buttons for question
+  const parent = btn.parentElement;
+  parent.querySelectorAll("button").forEach(b=>{
+    b.disabled=true;
+    b.style.opacity="0.6";
+  });
+
+  // Update score + fade in
+  const resultBox=document.getElementById("score-result");
+  resultBox.textContent=`Your Score: ${score} / 8`;
+  resultBox.classList.add("visible");
+
+  // Interpretation
+  const interp=document.getElementById("score-interpretation");
+  interp.textContent=getInterpretation(score);
+  interp.classList.add("visible");
+
+  // Progress bar
+  const bar=document.getElementById("progress-bar");
+  bar.style.width=(score/8)*100+"%";
+
+  // CTA Unlock
+  checkCompletion();
 }
+
+function getInterpretation(score){
+  if(score<=3) return "0–3: Father in Decline — intervention needed immediately.";
+  if(score<=6) return "4–6: Capable but inconsistent — the slide has begun.";
+  return "7–8: High-Performance Father — maintain standards or level up further.";
+}
+
+function resetScore(){
+  score=0;
+  answered={};
+
+  // Reset text
+  document.getElementById("score-result").textContent="Your Score: 0 / 8";
+  document.getElementById("score-result").classList.remove("visible");
+
+  document.getElementById("score-interpretation").textContent="";
+  document.getElementById("score-interpretation").classList.remove("visible");
+
+  // Reset buttons
+  document.querySelectorAll(".score-item button").forEach(btn=>{
+    btn.disabled=false;
+    btn.style.opacity="1";
+    btn.style.backgroundColor="transparent";
+    btn.style.color="var(--accent-soft)";
+    btn.style.border="1px solid #555";
+  });
+
+  // Reset progress bar
+  document.getElementById("progress-bar").style.width="0%";
+
+  // Reset CTA
+  document.getElementById("final-cta").classList.remove("visible");
+}
+
+function checkCompletion(){
+  if(Object.keys(answered).length===8){
+    document.getElementById("final-cta").classList.add("visible");
+  }
+}
+
 </script>
 <!-- FIT / NOT FIT SECTION -->
-<section class="section section-alt" id="fit">
+<section class="section section-alt fade-up" id="fit">
   <div class="container">
 
-    <div class="kicker">FILTERING MATTERS</div>
-    <h2 class="h2">Who this is for — and who it isn’t.</h2>
+    <div class="kicker fade-up">FILTERING MATTERS</div>
 
-    <p class="lead">
+    <h2 class="h2 fade-up">Who this is for — and who it isn’t.</h2>
+
+    <p class="lead fade-up">
       Not every father is ready to become elite. That’s the point.
     </p>
 
     <div class="fit-grid">
 
       <!-- FOR FATHERS WHO -->
-      <div class="fit-card">
+      <div class="fit-card card fade-up">
         <h3>For Fathers Who:</h3>
         <ul class="list-clean">
           <li>Are 30–45 with 1–3 young kids.</li>
@@ -596,12 +757,12 @@ function updateInterpretation() {
       </div>
 
       <!-- NOT FOR FATHERS WHO -->
-      <div class="fit-card">
+      <div class="fit-card card fade-up">
         <h3>Not For Fathers Who:</h3>
         <ul class="list-clean">
-          <li>Want shortcuts, hacks, or quick fixes.</li>
-          <li>Blame their kids instead of their choices.</li>
-          <li>Avoid discomfort and accountability.</li>
+          <li>Want shortcuts, hacks, or easy fixes.</li>
+          <li>Blame their kids for letting themselves go.</li>
+          <li>Avoid discomfort, challenge, and accountability.</li>
           <li>Refuse to change their habits or routines.</li>
           <li>Prefer excuses over results.</li>
         </ul>
@@ -614,48 +775,49 @@ function updateInterpretation() {
 
 
 <!-- PRICING ANCHOR SECTION -->
-<section class="section" id="value">
+<section class="section fade-up" id="value">
   <div class="container">
 
-    <div class="kicker">THE INVESTMENT</div>
-    <h2 class="h2">Why elite coaching costs more — and why it's worth it.</h2>
+    <div class="kicker fade-up">THE INVESTMENT</div>
 
-    <p class="lead">
+    <h2 class="h2 fade-up">Why elite coaching costs more — and why it's worth it.</h2>
+
+    <p class="lead fade-up">
       Most fathers spend years declining. Elite Fathers invest 16 weeks to rise again.
     </p>
 
     <div class="compare-grid" style="margin-top:26px;">
 
       <!-- COST OF DOING NOTHING -->
-      <div class="card">
+      <div class="card fade-up">
         <h3>The Hidden Cost of Doing Nothing</h3>
         <ul class="list-clean">
           <li>Years of low energy and quiet frustration.</li>
           <li>Weight gain, weakness, and declining testosterone.</li>
           <li>Reduced attraction and collapsing household polarity.</li>
-          <li>Becoming the father you swore you'd never be.</li>
+          <li>Becoming the man you swore you’d never be.</li>
           <li>Losing confidence, identity, and capability.</li>
         </ul>
       </div>
 
       <!-- VALUE OF BECOMING ELITE -->
-      <div class="card">
+      <div class="card fade-up">
         <h3>The Value of Becoming Elite</h3>
         <ul class="list-clean">
           <li>Strength, energy, and capability restored.</li>
           <li>15–25 lbs of fat lost in 16 weeks.</li>
           <li>Elevated testosterone, drive, and presence.</li>
-          <li>Discipline, leadership, and identity rebuilt.</li>
+          <li>Leadership, discipline, and identity rebuilt.</li>
           <li>Becoming the father your family actually looks up to.</li>
         </ul>
       </div>
 
     </div>
 
-    <p style="margin-top:26px; font-size:15px; color:var(--accent-soft);">
+    <p class="fade-up" style="margin-top:26px; font-size:15px; color:var(--accent-soft);">
       This is why the Elite Father Protocol is a high-ticket 1:1 coaching container.
       Most men never reach this level of commitment — only a few do.
-      Those are the men it exists for.
+      Those are the men this exists for.
     </p>
 
   </div>
@@ -664,32 +826,33 @@ function updateInterpretation() {
 
 
 <!-- SOCIAL PROOF SECTION -->
-<section class="section section-alt" id="proof">
+<section class="section section-alt fade-up" id="proof">
   <div class="container">
 
-    <div class="kicker">PROOF OF STANDARD</div>
-    <h2 class="h2">Proven by Elite Fathers.</h2>
+    <div class="kicker fade-up">PROOF OF STANDARD</div>
 
-    <p class="lead">
-      These are the kinds of wins fathers experience inside the Elite Father Protocol — 
-      and what you can expect when you commit.
+    <h2 class="h2 fade-up">Proven by Elite Fathers.</h2>
+
+    <p class="lead fade-up">
+      These are examples of the transformations and identity shifts fathers experience
+      inside the Elite Father Protocol — and what becomes possible when you commit.
     </p>
 
     <div class="quote-grid">
 
-      <div class="quote-card">
+      <div class="quote-card fade-up">
         “I didn’t realize how far I’d slipped. Within weeks, my energy came back.
         My wife noticed. My kids noticed. I felt like myself again.”
         <strong>— Example Father</strong>
       </div>
 
-      <div class="quote-card">
+      <div class="quote-card fade-up">
         “My strength shot up fast. I became disciplined again. I started leading again.
         The entire house changed because my presence changed.”
         <strong>— Example Father</strong>
       </div>
 
-      <div class="quote-card">
+      <div class="quote-card fade-up">
         “This wasn’t just fitness. I became a man I’m proud of again.
         My son looks at me differently. That’s priceless.”
         <strong>— Example Father</strong>
@@ -697,20 +860,18 @@ function updateInterpretation() {
 
     </div>
 
-    <div class="btn-row" style="margin-top:26px;">
-      <a class="btn-primary" href="#apply">
-        Apply for the Protocol
-      </a>
+    <div class="btn-row fade-up" style="margin-top:26px;">
+      <a class="btn-primary" href="#apply">Apply for the Protocol</a>
     </div>
 
   </div>
 </section>
 <!-- COACH SECTION -->
-<section class="section" id="coach">
+<section class="section fade-up" id="coach">
   <div class="container coach-grid">
 
     <!-- Coach Photo -->
-    <div class="avatar-box">
+    <div class="avatar-box fade-up">
       <img 
         src="https://raw.githubusercontent.com/CoachJamesPaul/elite-father-website/refs/heads/main/8ED356F9-C666-4549-A5EE-C93057D4A0FD.png"
         alt="James Paul - Elite Father Coach"
@@ -719,7 +880,7 @@ function updateInterpretation() {
     </div>
 
     <!-- Coach Bio -->
-    <div>
+    <div class="fade-up">
       <div class="kicker">MEET YOUR COACH</div>
 
       <h2 class="h2">The Elite Father behind the protocol.</h2>
@@ -730,9 +891,10 @@ function updateInterpretation() {
       </p>
 
       <p style="margin-top:14px; font-size:15px; color:var(--accent-soft);">
-        With a BSc in Biochemistry, an MSc in Applied Clinical Nutrition, and over a decade of experience
-        coaching men, I built The Elite Father Protocol to restore what fathers lose:
-        strength, energy, testosterone, identity, and leadership — without sacrificing their family.
+        With a BSc in Biochemistry, an MSc in Applied Clinical Nutrition,
+        and over a decade of experience coaching men, I built The Elite Father Protocol
+        to restore what fathers lose: strength, energy, testosterone, identity,
+        and leadership — without sacrificing their family.
       </p>
 
       <div class="trust-row" style="margin-top:16px;">
@@ -750,37 +912,40 @@ function updateInterpretation() {
 
 
 <!-- APPLY SECTION -->
-<section class="section section-alt" id="apply">
+<section class="section section-alt fade-up" id="apply">
   <div class="container" style="text-align:center;">
 
-    <div class="kicker">ELITE FATHERS ONLY</div>
+    <div class="kicker fade-up">ELITE FATHERS ONLY</div>
 
-    <h2 class="h2" style="display:inline-block;">
-      Apply for the Elite Father Protocol.
-    </h2>
+    <h2 class="h2 fade-up">Apply for the Elite Father Protocol.</h2>
 
-    <p class="lead" style="margin:0 auto 22px;">
+    <p class="lead fade-up">
       If you're ready to stop sliding backward and rebuild yourself into the strongest,
       most capable version of you — this is where it begins.
     </p>
 
-    <p style="font-size:14px; color:var(--accent-soft); max-width:640px; margin:0 auto 18px;">
+    <p class="fade-up" 
+       style="font-size:14px; color:var(--accent-soft); max-width:640px; margin:0 auto 18px;">
       Step 1: Complete the Elite Father Score.<br>
       Step 2: Submit your application & book your call.<br>
       Step 3: If it’s a fit, your 16-week rebuild begins.
     </p>
 
-    <div class="btn-row" style="justify-content:center; margin-top:28px;">
+    <div class="btn-row fade-up" style="justify-content:center; margin-top:28px;">
 
-      <a class="btn-primary"
+      <!-- CTA Unlock Animation (class added earlier) -->
+      <a class="btn-primary cta-animated"
+         id="final-cta"
          href="https://calendly.com/coach-elitefathercoach/15min"
          target="_blank">
-         Start Your Application
+        Start Your Application
       </a>
 
-      <a class="btn-outline" href="mailto:coach@elitefathercoach.com">
+      <a class="btn-outline" href="mailto:coach@elitefathercoach.com"
+         style="margin-left:12px;">
         coach@elitefathercoach.com
       </a>
+
     </div>
 
   </div>
@@ -789,18 +954,45 @@ function updateInterpretation() {
 
 
 <!-- FOOTER -->
-<footer>
-  <div class="container" style="display:flex; justify-content:space-between; flex-wrap:wrap;">
+<footer class="fade-up">
+  <div class="container" 
+       style="display:flex; justify-content:space-between; flex-wrap:wrap;">
     <div>© <span id="year"></span> Elite Father Coaching. All rights reserved.</div>
     <div>No excuses. No softness. No decline.</div>
   </div>
 </footer>
+<script>
+// =============================
+// FADE-UP SCROLL ANIMATION ENGINE
+// =============================
+
+// All elements with class="fade-up" start hidden.
+// When they enter the viewport, they gain .visible.
+
+const fadeElements = document.querySelectorAll('.fade-up');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+
+      // Once visible, we stop observing (prevents repeated animations)
+      observer.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.15 // triggers animation when 15% of the element is visible
+});
+
+// Observe all fade-up elements
+fadeElements.forEach(el => observer.observe(el));
+</script>
+<!-- AUTO-UPDATE FOOTER YEAR -->
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 
 </div> <!-- END .page -->
-
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
 
 </body>
 </html>
