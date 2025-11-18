@@ -6,6 +6,10 @@
 <title>The Elite Father Protocol | Elite Fathers Only</title>
 
 <style>
+
+/* ============================= */
+/* ROOT VARIABLES */
+/* ============================= */
 :root {
   --bg-dark:#050608;
   --bg-section:#0b0c10;
@@ -17,27 +21,15 @@
   --danger:#f25f5c;
   --accent-soft:#c5c6c7;
 }
-.card {
-  background: var(--bg-card);
-  border-radius: 18px;
-  padding: 22px 20px 20px;
-  border: 1px solid var(--border-subtle);
-}
-/* CARD SPACING FIXES */
-.card {
-  margin-bottom: 32px;
-}
 
-.card h3 {
-  margin-bottom: 14px;
+/* ============================= */
+/* RESET */
+/* ============================= */
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
-
-.card p {
-  line-height: 1.6;
-  margin-bottom: 6px;
-}
-
-* { margin:0; padding:0; box-sizing:border-box; }
 
 body {
   font-family:system-ui,Arial,sans-serif;
@@ -50,20 +42,37 @@ a { text-decoration:none; color:inherit; }
 
 .page { min-height:100vh; }
 
-/* GLOBAL SPACING IMPROVEMENTS */
+/* ============================= */
+/* GLOBAL SPACING */
+/* ============================= */
 section { padding:80px 20px; }
 .lead { margin-bottom:24px; }
 .h2 { margin-bottom:24px; margin-top:40px; }
-.list-clean li {
-  margin-bottom: 12px;
+
+/* Bullet spacing */
+.list-clean li { margin-bottom:12px; }
+.list-clean { margin-top:32px; margin-bottom:40px; }
+
+/* Fix spacing above kicker labels */
+.kicker { margin-top:40px; }
+
+/* ============================= */
+/* CARD SPACING FIXES */
+/* ============================= */
+.card {
+  background: var(--bg-card);
+  border-radius: 18px;
+  padding: 22px 20px 20px;
+  border: 1px solid var(--border-subtle);
+  margin-bottom: 32px;
 }
 
-.list-clean {
-  margin-top: 32px;
-  margin-bottom: 40px;
-}
+.card h3 { margin-bottom: 14px; }
+.card p { line-height:1.6; margin-bottom:6px; }
 
+/* ============================= */
 /* NAV */
+/* ============================= */
 .nav {
   position:sticky; top:0; z-index:50;
   backdrop-filter:blur(16px);
@@ -74,70 +83,42 @@ section { padding:80px 20px; }
   max-width:1100px; margin:0 auto; padding:14px 20px;
   display:flex; justify-content:space-between; align-items:center;
 }
-.nav-logo {
-  font-size:18px; font-weight:700; letter-spacing:0.14em;
-  text-transform:uppercase;
-}
-.nav-tag {
-  font-size:11px; letter-spacing:0.18em; text-transform:uppercase;
-  color:var(--muted); margin-left:10px;
-}
-.nav-links {
-  display:flex; gap:18px;
-  font-size:13px; text-transform:uppercase; letter-spacing:0.16em;
-  color:var(--accent-soft);
-}
+.nav-logo { font-size:18px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; }
+.nav-tag { font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); margin-left:10px; }
+.nav-links { display:flex; gap:18px; font-size:13px; text-transform:uppercase; letter-spacing:0.16em; color:var(--accent-soft); }
 
-/* SECTION WRAPPERS */
-.section {
-  padding:80px 20px;
-  background:radial-gradient(circle at top,rgba(255,255,255,0.025),rgba(0,0,0,0.92));
-  border-bottom:1px solid var(--border-subtle);
-}
-.section-alt {
-  padding:80px 20px;
-  background:radial-gradient(circle at center,rgba(13,14,24,0.92),rgba(0,0,0,0.97));
-  border-bottom:1px solid var(--border-subtle);
-}
-.container { max-width:1100px; margin:0 auto; }
-
+/* ============================= */
 /* TYPOGRAPHY */
+/* ============================= */
 .kicker {
   font-size:11px;
   letter-spacing:0.24em;
   text-transform:uppercase;
   color:var(--accent-soft);
   margin-bottom:10px;
-  margin-top:32px; /* ADD THIS */
-}
-.h1 {
-  font-size:clamp(34px,4vw,48px);
-  font-weight:700; line-height:1.1; margin-bottom:12px;
-}
-.h1 span { color:var(--accent); }
-.h2 {
-  font-size:clamp(22px,3vw,30px);
-  font-weight:600;
-  position:relative; padding-left:14px;
-}
-.h2::before {
-  content:""; position:absolute;
-  left:0; top:4px; bottom:4px; width:3px;
-  background:var(--accent); border-radius:2px;
-}
-.lead {
-  font-size:17px; color:var(--accent-soft);
-  max-width:680px;
 }
 
+.h1 {
+  font-size:clamp(34px,4vw,48px);
+  font-weight:700;
+  line-height:1.1;
+  margin-bottom:12px;
+}
+
+.h1 span { color:var(--accent); }
+
+/* ============================= */
 /* BUTTONS */
+/* ============================= */
 .btn-row { display:flex; flex-wrap:wrap; gap:14px; margin-top:20px; }
+
 .btn-primary {
   padding:12px 22px; border-radius:999px;
   background:var(--accent); color:#000;
   font-size:14px; font-weight:600;
   text-transform:uppercase; letter-spacing:0.16em;
 }
+
 .btn-outline {
   padding:11px 20px; border-radius:999px;
   border:1px solid rgba(255,255,255,0.28);
@@ -145,13 +126,15 @@ section { padding:80px 20px; }
   font-size:12px; text-transform:uppercase; letter-spacing:0.16em;
 }
 
+/* ============================= */
 /* HERO GRID */
+/* ============================= */
 .hero-grid {
   display:grid;
   grid-template-columns:minmax(0,2fr) minmax(0,1.3fr);
   gap:40px; align-items:center;
 }
-@media(max-width:800px) {
+@media(max-width:800px){
   .hero-grid { grid-template-columns:1fr; }
   .nav-links { display:none; }
 }
@@ -173,13 +156,9 @@ section { padding:80px 20px; }
   background:rgba(0,0,0,0.45);
   border:1px solid rgba(255,255,255,0.04);
 }
-.metric-label {
-  font-size:11px; text-transform:uppercase;
-  letter-spacing:0.14em; color:var(--accent-soft);
-}
-.metric-value {
-  font-size:18px; font-weight:600;
-}
+.metric-label { font-size:11px; text-transform:uppercase; letter-spacing:0.14em; color:var(--accent-soft); }
+.metric-value { font-size:18px; font-weight:600; }
+
 </style>
 </head>
 
@@ -200,10 +179,12 @@ section { padding:80px 20px; }
       <a href="#apply">Apply</a>
     </nav>
   </div>
-</header><!-- HERO -->
+</header>
+<!-- HERO -->
 <section class="section" id="top">
   <div class="container hero-grid">
 
+    <!-- HERO LEFT TEXT -->
     <div>
       <div class="kicker">FATHERHOOD AS A FORGE</div>
 
@@ -223,10 +204,11 @@ section { padding:80px 20px; }
       </div>
 
       <div class="btn-row">
-        <a class="btn-primary" 
-           href="https://calendly.com/coach-elitefathercoach/15min" 
+        <!-- Primary CTA goes directly to Calendly -->
+        <a class="btn-primary"
+           href="https://calendly.com/coach-elitefathercoach/15min"
            target="_blank">
-          Apply Now
+           Apply Now
         </a>
 
         <a class="btn-outline" href="#score">
@@ -235,10 +217,12 @@ section { padding:80px 20px; }
       </div>
     </div>
 
+
+    <!-- HERO RIGHT: ASIDE METRIC CARD -->
     <aside class="hero-aside">
       <div class="kicker">THE ELITE FATHER PROTOCOL</div>
 
-      <p style="font-size:14px;color:var(--accent-soft);">
+      <p style="font-size:14px; color:var(--accent-soft);">
         I take unfit, exhausted dads and rebuild them into the strongest, leanest,
         most capable version of themselves in 16 weeks — no excuses, no softness, just elite performance.
       </p>
@@ -260,13 +244,15 @@ section { padding:80px 20px; }
     </aside>
 
   </div>
-</section><!-- PROBLEM + TRUTH SECTION -->
+</section>
+<!-- PROBLEM + TRUTH SECTION -->
 <section class="section section-alt" id="problem">
   <div class="container grid-2">
 
     <!-- PROBLEM -->
     <div>
       <div class="kicker">THE PROBLEM</div>
+
       <h2 class="h2">Most fathers are quietly decaying.</h2>
 
       <p class="lead">
@@ -282,9 +268,11 @@ section { padding:80px 20px; }
       </ul>
     </div>
 
-    <!-- TRUTH -->
+
+    <!-- THE TRUTH -->
     <div>
       <div class="kicker">THE TRUTH</div>
+
       <h2 class="h2">You're not exhausted because you're a dad.</h2>
 
       <p class="lead">
@@ -300,8 +288,8 @@ section { padding:80px 20px; }
         <li>Testosterone dropped because habits dropped.</li>
       </ul>
 
-      <p style="font-size:14px;color:var(--accent-soft);margin-top:12px;font-style:italic;">
-        Decline is not a requirement of fatherhood — it's the consequence of letting yourself go.
+      <p style="font-size:14px; color:var(--accent-soft); margin-top:12px; font-style:italic;">
+        Decline is not a requirement of fatherhood — it’s the consequence of letting yourself go.
       </p>
     </div>
 
@@ -309,11 +297,13 @@ section { padding:80px 20px; }
 </section>
 
 
+
 <!-- DIFFERENCE SECTION -->
 <section class="section" id="difference">
   <div class="container">
 
     <div class="kicker">NOT ANOTHER DAD FITNESS PLAN</div>
+
     <h2 class="h2">What makes the Elite Father Protocol different.</h2>
 
     <p class="lead">
@@ -325,33 +315,35 @@ section { padding:80px 20px; }
 
       <!-- TYPICAL DAD FITNESS -->
       <div class="card">
-  <h3 style="margin-bottom:12px;">Typical Dad Fitness</h3>
-  <ul class="list-clean">
-    <li>Random workouts with no progression.</li>
-    <li>“Eat clean” clichés instead of real strategy.</li>
-    <li>No hormonal or metabolic understanding.</li>
-    <li>Built for aesthetics, not capability.</li>
-    <li>Zero accountability and zero leadership.</li>
-    <li>Treats fatherhood as a limitation.</li>
-  </ul>
-</div>
+        <h3>Typical Dad Fitness</h3>
+        <ul class="list-clean">
+          <li>Random workouts with no progression.</li>
+          <li>“Eat clean” clichés instead of real strategy.</li>
+          <li>No hormonal or metabolic understanding.</li>
+          <li>Built for aesthetics, not capability.</li>
+          <li>Zero accountability and zero leadership.</li>
+          <li>Treats fatherhood as a limitation.</li>
+        </ul>
+      </div>
 
-<div class="card">
-  <h3 style="margin-bottom:12px;">The Elite Father Protocol</h3>
-  <ul class="list-clean">
-    <li>Strength + conditioning engineered for fathers.</li>
-    <li>Metabolic & hormonal optimization.</li>
-    <li>1:1 high-touch accountability & leadership.</li>
-    <li>Discipline + identity systems.</li>
-    <li>Built by a father with clinical + performance expertise.</li>
-    <li>Turns fatherhood into an advantage — not an excuse.</li>
-  </ul>
-</div>
+      <!-- ELITE FATHER PROTOCOL -->
+      <div class="card">
+        <h3>The Elite Father Protocol</h3>
+        <ul class="list-clean">
+          <li>Strength + conditioning engineered for fathers.</li>
+          <li>Metabolic & hormonal optimization.</li>
+          <li>1:1 high-touch accountability & leadership.</li>
+          <li>Discipline + identity systems.</li>
+          <li>Built by a father with clinical + performance expertise.</li>
+          <li>Turns fatherhood into an advantage — not an excuse.</li>
+        </ul>
+      </div>
 
     </div>
 
   </div>
-</section><!-- ELITE FATHER PROTOCOL -->
+</section>
+<!-- ELITE FATHER PROTOCOL -->
 <section class="section section-alt" id="protocol">
   <div class="container">
 
@@ -369,7 +361,7 @@ section { padding:80px 20px; }
       <div class="card">
         <h3>1. Biochem-Based Nutrition</h3>
         <p>
-          Clinically grounded metabolic optimization, protein structure, inflammation control,
+          Clinically grounded metabolic optimization, protein-first structure, inflammation control,
           carb timing, and nutrition systems designed for elite performance.
         </p>
       </div>
@@ -378,8 +370,8 @@ section { padding:80px 20px; }
       <div class="card">
         <h3>2. Strength + Conditioning</h3>
         <p>
-          Hybrid operator-style training: strength, hypertrophy,
-          power, and conditioning designed for capability — not vanity.
+          Hybrid operator-style training: strength, hypertrophy, power, and conditioning
+          designed for capability — not vanity.
         </p>
       </div>
 
@@ -387,9 +379,8 @@ section { padding:80px 20px; }
       <div class="card">
         <h3>3. Hormone & Metabolic Optimization</h3>
         <p>
-          Sleep architecture, cortisol control, metabolic stabilization,
-          glucose regulation, and testosterone-supporting lifestyle protocols
-          written specifically for fathers.
+          Sleep architecture, cortisol regulation, metabolic stabilization,
+          and testosterone-supporting lifestyle protocols tailored for fathers.
         </p>
       </div>
 
@@ -416,7 +407,7 @@ section { padding:80px 20px; }
     <!-- TIMELINE -->
     <div style="margin-top:40px;">
       <div class="kicker">THE 16-WEEK ARC</div>
-      <h3 style="font-size:18px;margin-bottom:12px;">What the journey looks like:</h3>
+      <h3 style="font-size:18px; margin-bottom:12px;">What the journey looks like:</h3>
 
       <div class="timeline">
 
@@ -428,19 +419,19 @@ section { padding:80px 20px; }
 
         <div class="timeline-step">
           <strong>Weeks 3–6 — Intensification</strong>
-          Strength climbs. Fat starts dropping. Discipline systems lock in.
-          Your edge begins returning.
+          Strength climbs, fat drops, discipline locks in.
+          Your edge begins returning quickly.
         </div>
 
         <div class="timeline-step">
           <strong>Weeks 7–12 — Optimization</strong>
-          Metabolism and hormones optimize. Conditioning improves.
-          Body composition shifts visibly.
+          Hormones, metabolism, conditioning, and body composition shift visibly.
+          Your confidence and presence rise.
         </div>
 
         <div class="timeline-step">
           <strong>Weeks 13–16 — Consolidation</strong>
-          Identity, standards, and leadership are hardened.
+          Identity hardening, leadership integration, and permanent lifestyle architecture.
           This is where the Elite Father identity becomes permanent.
         </div>
 
@@ -451,7 +442,7 @@ section { padding:80px 20px; }
 </section>
 
 
-<!-- ELITE FATHER SCORE -->
+<!-- INTERACTIVE ELITE FATHER SCORE -->
 <section class="section" id="score">
   <div class="container">
 
@@ -459,37 +450,105 @@ section { padding:80px 20px; }
     <h2 class="h2">Your Elite Father Score.</h2>
 
     <p class="lead">
-      Your performance as a father can be measured.
-      Answer honestly — this is the mirror most men avoid.
+      Click “Yes” for each statement that is true. Your score updates automatically.
     </p>
 
-    <div class="score-grid">
-      <ul class="list-clean">
-        <li>Do you train with intensity at least 3–4 days per week?</li>
-        <li>Do you sleep 7+ hours most nights with a structured routine?</li>
-        <li>Do you follow a consistent protein-first nutrition system?</li>
-        <li>Do you feel strong, capable, and energized daily?</li>
-        <li>Do you lead your household with presence & discipline?</li>
-        <li>Has your strength increased in the last 12 months?</li>
-        <li>Do you manage stress purposefully instead of coping with it?</li>
-        <li>Would your family say you're operating at your highest level?</li>
-      </ul>
+    <div id="score-questions" style="margin-top:32px;">
 
-      <div class="score-scale" style="margin-top:16px;">
-        <span><strong>0–3:</strong> Father in Decline — intervention needed immediately.</span>
-        <span><strong>4–6:</strong> Capable but Inconsistent — the slide has already begun.</span>
-        <span><strong>7–8:</strong> High-Performance Father — maintain standards or level up.</span>
+      <div class="score-item">
+        <p>1. Do you train with intensity at least 3–4 days per week?</p>
+        <button class="yes-btn" onclick="updateScore(1, this)">Yes</button>
       </div>
+
+      <div class="score-item">
+        <p>2. Do you sleep 7+ hours most nights with a structured routine?</p>
+        <button class="yes-btn" onclick="updateScore(2, this)">Yes</button>
+      </div>
+
+      <div class="score-item">
+        <p>3. Do you follow a consistent protein-first nutrition system?</p>
+        <button class="yes-btn" onclick="updateScore(3, this)">Yes</button>
+      </div>
+
+      <div class="score-item">
+        <p>4. Do you feel strong, capable, and energized daily?</p>
+        <button class="yes-btn" onclick="updateScore(4, this)">Yes</button>
+      </div>
+
+      <div class="score-item">
+        <p>5. Do you lead your household with presence & discipline?</p>
+        <button class="yes-btn" onclick="updateScore(5, this)">Yes</button>
+      </div>
+
+      <div class="score-item">
+        <p>6. Has your strength increased in the last 12 months?</p>
+        <button class="yes-btn" onclick="updateScore(6, this)">Yes</button>
+      </div>
+
+      <div class="score-item">
+        <p>7. Do you manage stress purposefully instead of coping with it?</p>
+        <button class="yes-btn" onclick="updateScore(7, this)">Yes</button>
+      </div>
+
+      <div class="score-item">
+        <p>8. Would your family say you're operating at your highest level?</p>
+        <button class="yes-btn" onclick="updateScore(8, this)">Yes</button>
+      </div>
+
     </div>
 
-    <div class="btn-row" style="margin-top:26px;">
-      <a class="btn-primary" href="#apply">
+    <div id="score-result"
+         style="margin-top:40px; font-size:20px; font-weight:bold;">
+         Your Score: 0 / 8
+    </div>
+
+    <p id="score-interpretation"
+       style="margin-top:12px; color:var(--accent-soft); font-size:16px;"></p>
+
+    <div class="btn-row" style="margin-top:32px;">
+      <a class="btn-primary"
+         href="https://calendly.com/coach-elitefathercoach/15min"
+         target="_blank">
         Apply for the Protocol
       </a>
     </div>
 
   </div>
-</section><!-- FIT / NOT FIT SECTION -->
+</section>
+
+
+<!-- SCORE SCRIPT -->
+<script>
+let score = 0;
+let answered = {};
+
+function updateScore(q, btn) {
+  if (!answered[q]) {
+    score++;
+    answered[q] = true;
+    btn.style.backgroundColor = "#4ade80"; // green
+    btn.style.color = "#000";
+    btn.style.border = "none";
+    document.getElementById("score-result").textContent = `Your Score: ${score} / 8`;
+    updateInterpretation();
+  }
+}
+
+function updateInterpretation() {
+  let text = "";
+
+  if (score <= 3) {
+    text = "0–3: Father in Decline — intervention needed immediately.";
+  } else if (score <= 6) {
+    text = "4–6: Capable but inconsistent — the slide has already begun.";
+  } else {
+    text = "7–8: High-Performance Father — maintain standards or level up even further.";
+  }
+
+  document.getElementById("score-interpretation").textContent = text;
+}
+</script>
+<!-- FIT / NOT FIT SECTION -->
 <section class="section section-alt" id="fit">
   <div class="container">
 
@@ -571,10 +630,10 @@ section { padding:80px 20px; }
 
     </div>
 
-    <p style="margin-top:26px;font-size:15px;color:var(--accent-soft);">
+    <p style="margin-top:26px; font-size:15px; color:var(--accent-soft);">
       This is why the Elite Father Protocol is a high-ticket 1:1 coaching container.
       Most men never reach this level of commitment — only a few do.
-      Those are the men this exists for.
+      Those are the men it exists for.
     </p>
 
   </div>
@@ -617,11 +676,14 @@ section { padding:80px 20px; }
     </div>
 
     <div class="btn-row" style="margin-top:26px;">
-      <a class="btn-primary" href="#apply">Apply for the Protocol</a>
+      <a class="btn-primary" href="#apply">
+        Apply for the Protocol
+      </a>
     </div>
 
   </div>
-</section><!-- COACH SECTION -->
+</section>
+<!-- COACH SECTION -->
 <section class="section" id="coach">
   <div class="container coach-grid">
 
@@ -637,6 +699,7 @@ section { padding:80px 20px; }
     <!-- Coach Bio -->
     <div>
       <div class="kicker">MEET YOUR COACH</div>
+
       <h2 class="h2">The Elite Father behind the protocol.</h2>
 
       <p class="lead">
@@ -644,13 +707,13 @@ section { padding:80px 20px; }
         I don’t accept excuses, I don’t tolerate softness, and I don’t allow decline.
       </p>
 
-      <p style="margin-top:14px;font-size:15px;color:var(--accent-soft);">
+      <p style="margin-top:14px; font-size:15px; color:var(--accent-soft);">
         With a BSc in Biochemistry, an MSc in Applied Clinical Nutrition, and over a decade of experience
         coaching men, I built The Elite Father Protocol to restore what fathers lose:
         strength, energy, testosterone, identity, and leadership — without sacrificing their family.
       </p>
 
-      <div class="trust-row">
+      <div class="trust-row" style="margin-top:16px;">
         <div class="trust-pill">BSc Biochemistry</div>
         <div class="trust-pill">MSc Clinical Nutrition</div>
         <div class="trust-pill">10+ Years Coaching</div>
@@ -669,24 +732,28 @@ section { padding:80px 20px; }
   <div class="container" style="text-align:center;">
 
     <div class="kicker">ELITE FATHERS ONLY</div>
-    <h2 class="h2" style="display:inline-block;">Apply for the Elite Father Protocol.</h2>
+
+    <h2 class="h2" style="display:inline-block;">
+      Apply for the Elite Father Protocol.
+    </h2>
 
     <p class="lead" style="margin:0 auto 22px;">
       If you're ready to stop sliding backward and rebuild yourself into the strongest,
       most capable version of you — this is where it begins.
     </p>
 
-    <p style="font-size:14px;color:var(--accent-soft);max-width:640px;margin:0 auto 18px;">
+    <p style="font-size:14px; color:var(--accent-soft); max-width:640px; margin:0 auto 18px;">
       Step 1: Complete the Elite Father Score.<br>
       Step 2: Submit your application & book your call.<br>
       Step 3: If it’s a fit, your 16-week rebuild begins.
     </p>
 
-    <div class="btn-row" style="justify-content:center;margin-top:22px;">
+    <div class="btn-row" style="justify-content:center; margin-top:28px;">
+
       <a class="btn-primary"
          href="https://calendly.com/coach-elitefathercoach/15min"
          target="_blank">
-        Start Your Application
+         Start Your Application
       </a>
 
       <a class="btn-outline" href="mailto:coach@elitefathercoach.com">
@@ -701,13 +768,13 @@ section { padding:80px 20px; }
 
 <!-- FOOTER -->
 <footer>
-  <div class="container">
+  <div class="container" style="display:flex; justify-content:space-between; flex-wrap:wrap;">
     <div>© <span id="year"></span> Elite Father Coaching. All rights reserved.</div>
     <div>No excuses. No softness. No decline.</div>
   </div>
 </footer>
 
-</div>  <!-- END .page -->
+</div> <!-- END .page -->
 
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
